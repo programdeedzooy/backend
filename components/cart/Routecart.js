@@ -11,6 +11,7 @@ router.post("/", async(req, res) => {
     console.log("i am in cart post ")
     const cartpost = await new cart({
         id: req.body.id,
+        itemid: req.body.itemid,
         fruitid: req.body.fruitid,
         name: req.body.name,
         kg: req.body.kg,
@@ -25,9 +26,21 @@ router.post("/", async(req, res) => {
 })
 
 
+router.put("/", async(req, res) => {
+    try {
+        console.log("i am in put")
+        const updatecart = await cart.updateOne({ id: req.body.id }, { $set: { name: req.body.name, imgs: req.body.imgs } })
+        res.status(200).json(updatecart)
+    } catch {
+        res.json({ "err": err })
+    }
+})
+
+
 router.delete("/", async(req, res) => {
     console.log("i am cart deleting");
-    const delet = await cart.remove({ _id: req.body._id })
+    console.log(req.body)
+    const delet = await cart.remove({ _id: req.body.idd })
     res.status(200).json(delet)
 })
 

@@ -5,10 +5,14 @@ const cart = mongoose.Schema({
         type: Number,
         required: true
     },
-    // fruitid: {
-    //     type: Number,
-    //     required: true
-    // },
+    fruitid: {
+        type: Number,
+        required: true
+    },
+    itemid: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true

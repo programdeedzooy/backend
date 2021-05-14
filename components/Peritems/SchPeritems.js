@@ -6,7 +6,7 @@ const Peritems = mongoose.Schema({
         required: true
     },
     fruitid: {
-        type: Number,
+        type: String,
         required: true
     },
     name: {

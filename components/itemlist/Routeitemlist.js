@@ -16,9 +16,12 @@ router.post("/", async(req, res) => {
         id: req.body.id,
         fruitid: req.body.fruitid,
         name: req.body.name,
-        imgs: req.body.imgs,
+        com: req.body.com,
         Rs: req.body.Rs,
-        items: req.body.items
+        imgs: req.body.imgs,
+        review: req.body.review,
+        items: req.body.items,
+        kg: req.body.kg
     })
     const itemssave = await itemss.save()
     res.status(200).json(itemssave)

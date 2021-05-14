@@ -5,6 +5,7 @@ const itemlist = mongoose.Schema({
     id: {
         type: Number,
         required: true,
+        undefined: true,
     },
     fruitid: {
         type: Number,
