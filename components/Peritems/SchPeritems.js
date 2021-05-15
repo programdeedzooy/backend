@@ -3,11 +3,12 @@ const mongoose = require("mongoose")
 const Peritems = mongoose.Schema({
     id: {
         type: Number,
-        required: true
+        required: true,
+        unique: true,
     },
     fruitid: {
         type: String,
-        required: true
+        required: true,
     },
     name: {
         type: String,
