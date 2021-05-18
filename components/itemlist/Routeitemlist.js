@@ -3,11 +3,33 @@ const route = require("color-convert/route")
 const express = require("express")
 const router = express.Router()
 const items = require("./Schitemlist")
-
+const jwt = require("jsonwebtoken")
 
 router.get("/", async(req, res) => {
-    const val = await items.find()
-    res.status(200).json(val)
+    const cookies = req.cookies["jwt"]
+        // res.send(cookies)
+    console.log("jwt ", cookies)
+    const clains = jwt.verify(cookies, 'i love coding')
+    console.log(clains)
+
+    try {
+
+
+        if (!clains) {
+
+            console.log("it is not cookies")
+            res.json("it is not cookies")
+        } else {
+            const val = await items.find()
+            res.status(200).json(val)
+            res.json("it is cookies")
+            console.log("it is cookies")
+        }
+    } catch {
+        return res.status(200).json({ err: "jwt is not present" })
+    }
+
+
 })
 
 router.post("/", async(req, res) => {
