@@ -2,6 +2,8 @@ const express = require("express")
 const router = express.Router()
 const cart = require("./Schcart")
 const jwt = require("jsonwebtoken")
+
+
 router.get("/", async(req, res) => {
 
     const cookies = req.cookies["jwt"]
@@ -41,6 +43,7 @@ router.post("/", async(req, res) => {
         imgs: req.body.imgs,
         review: req.body.review,
         cart: req.body.cart,
+        idcart: req.body.idcart
     })
     const cartsave = cartpost.save()
     res.status(200).json(cartsave)
@@ -64,5 +67,17 @@ router.delete("/", async(req, res) => {
     const delet = await cart.remove({ _id: req.body.idd })
     res.status(200).json(delet)
 })
+
+router.get("/:id", async(req, res) => {
+    console.log("i am in getid items")
+        // console.log(req.body)
+    console.log(req.params.id)
+        // res.status(200).json(req.params.id)
+    const cartis = await cart.find({ idcart: req.params.id })
+    res.status(200).json(cartis)
+        // const getid = await Peritems.findById(req.params.id)
+        // res.status(200).json(getid)
+})
+
 
 module.exports = router

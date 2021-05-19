@@ -40,6 +40,10 @@ const cart = mongoose.Schema({
     cart: {
         type: Number,
         required: true
+    },
+    idcart: {
+        type: String,
+        required: true
     }
 })
 
