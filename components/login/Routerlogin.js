@@ -43,12 +43,12 @@ router.post("/", async(req, res) => {
             res.cookie("guna", true, { httpOnly: true, maxAge: maxAge * 1000, sameSite: 'none', secure: true })
             res.status(200).json({ login: sig._id, token: token })
         } else {
-            res.json("it is not user")
-            res.status(200).json("it is not corect pass")
+            // res.json("it is not user")
+            res.status(200).json({ err: "it is not corect pass" })
         }
     } else {
         const val = await sign.find()
-        res.status(200).json("it is not user email")
+        res.status(200).json({ err: "it is not user email" })
     }
 
 })
