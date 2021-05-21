@@ -50,7 +50,7 @@ router.post("/", async(req, res) => {
 
 router.delete("/", async(req, res) => {
     console.log("i am delet deliver")
-    const val = await deliver.remove({ _id: req.body._id })
+    const val = await deliver.remove({ _id: req.body.idd })
     res.status(200).json(val)
 })
 

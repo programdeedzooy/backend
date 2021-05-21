@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const Peritems = mongoose.Schema({
     id: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
     },
